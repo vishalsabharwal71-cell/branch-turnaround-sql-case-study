@@ -1,3 +1,20 @@
+/* 
+File: 04_rank_attribution.sql
+Purpose: Final YoY performance analysis with ranking attribution
+
+Business Context:
+- Branch: GORAYA (SOL ID 8653)
+- Compares same-day & same-month YoY metrics
+- Correctly handles ordinal metrics (e.g., Branch Rank)
+- Attributes performance movement to business actions
+
+Outcome:
+- Branch Rank improvement identified
+- Advances Outstanding YoY growth calculated
+*/
+
+
+
 SELECT
 	y.branch_sol_id,
 	y.metric_name,
@@ -31,4 +48,5 @@ WHERE curr.branch_sol_id = 8653
 ) y
 LEFT JOIN dbo.ranking_framework r
 	ON y.metric_name = r.Metric
+
 ORDER BY y.metric_name;
